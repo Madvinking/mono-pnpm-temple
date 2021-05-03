@@ -42,8 +42,20 @@ export const globalSchema = Joi.object({
   }).default(),
   services: Joi.array()
     .default([
-      { name: 'user', url: 'http://localhost:8081', supportGraphql: true, endpoints: ['/user/*'] },
-      { name: 'frontend', url: 'http://localhost:8181', supportGraphql: false, endpoints: ['/', '/*'] }
+      {
+        name: 'user',
+        url: 'http://localhost:8081',
+        supportGraphql: true,
+        endpoints: ['/user/*'],
+        skipAuth: ['/user/login', '/user/signup'],
+      },
+      {
+        name: 'frontend',
+        url: 'http://localhost:8181',
+        supportGraphql: false,
+        endpoints: ['/', '/app/*', '/login', '/signup'],
+        skipAuth: ['/', '/app', '/login', '/signup', '/favicon.ico'],
+      }
     ]),
   consul: Joi.object({
     host: Joi.string().default(env.CONSUL_HOST),

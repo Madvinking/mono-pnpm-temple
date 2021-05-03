@@ -53,6 +53,6 @@ export async function signupApi({ name, email, password, company, phone }) {
   }
 }
 
-export async function getDataApi(email) {
-  return await User.findOne({ email });
+export async function getDataApi(_id) {
+  return await User.findOne({ _id });
 }

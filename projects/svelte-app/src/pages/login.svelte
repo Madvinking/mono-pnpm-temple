@@ -5,7 +5,7 @@
 
   let email = '';
   let password = '';
-  prefetch('/main');
+  // prefetch('/main');
 
   function handleKeydown(e) {
     if (e.keyCode === 13) logIn({ email, password });

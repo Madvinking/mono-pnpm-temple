@@ -71,13 +71,13 @@ export const validateLoggedIn = async () => {
 
     const { id = null, name = null, email = null, createdAt = null, company = null } = getFromStorage('userData');
     if (!id || !name || !email || !createdAt || !company) {
-      const data = await fetch('/user/getUserData');
+      const data = await fetch('/user/getData');
       setUserDataStorage(data);
     } else {
       setUserDataStorage({ id, name, email, company, createdAt });
     }
 
-
+    console.log('window.location.pathname: ', window.location.pathname);
     const pathname = ['/login', '/singup', '/'].includes(window.location.pathname) ? '/main' : window.location.pathname;
     history.pushState({}, null, pathname);
 

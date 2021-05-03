@@ -1,4 +1,6 @@
 import './utils/ServerError.js';
+import e from 'express';
+export const express = e;
 export * as safeStringify from 'fast-safe-stringify';
 export { initService } from './initService.js';
 export { consul } from './consul.js';

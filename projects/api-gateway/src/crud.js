@@ -1,49 +1,52 @@
 import { validateCsrf, createCsrf } from './middelwares/csrf.js';
 import { validateAuth } from './middelwares/auth.js';
-import { config } from '@mono-pnpm-temple/toolbox';
+import { config, express } from '@mono-pnpm-temple/toolbox';
 import proxy from 'express-http-proxy';
+
 export function crudGateway(app) {
-  const skipAuthVaildation = ['^/$', '.*\.js$', '.*\.png$', '.*\.svelte$', '.*\.css$', '^/@vite', '^/user/signup', '^/user/login', '.+\[\[routify_url_options\]\].+'].map(r => new RegExp(r));
-
-  app.use(async (req, res, next) => {
-    if (skipAuthVaildation.some(r => r.test(req.path))) next();
-    else await validateAuth(req, res, next);
+  app.get('/user/isLoggedIn', validateAuth, validateCsrf, createCsrf, (req, res) => {
+    res.json(JSON.parse(req.headers['user-data']));
   });
 
-  app.use(validateCsrf);
-
-  const createCsrfList = ['/', '/isLoggedIn', '/logout']
-
-  app.use((req, res, next) => {
-    if (createCsrfList.includes(req.path)) createCsrf(req, res, next);
-    else next();
-  });
-
-  app.get('/user/isLoggedIn', (req, res) => {
-    res.json(req.user);
-  });
-
-  app.post('/user/logout', async (req, res) => {
+  app.post('/user/logout', validateAuth, validateCsrf, createCsrf, async (req, res) => {
     res.cookie('x-auth-token', '', { maxAge: 0 });
     res.json({});
   });
 
-  const serivces = config.get('services');
+  const services = config.get('services');
 
-
-  serivces.forEach(({ name, url, endpoints }) => {
-
+  services.forEach(({ name, url, endpoints, skipAuth = [] }) => {
     // for local developmnet
-    if (name === 'frontend' && config.get('appStaticRoutes')) {
-      const staticRoute = express.static(path.join(__dirname, `../../../${config.get('appFolder')}/dist/`), {
-        maxAge: '120d',
-      });
-      app.get(endpoints, staticRoute);
+    if (name === 'frontend') {
+      let handler;
+      if (config.get('appStaticRoutes')) {
+        handler = express.static(path.join(__dirname, `../../../${config.get('appFolder')}/dist/`), {
+          maxAge: '120d',
+        });
+      }
+      else {
+        handler = proxy(url, {
+          proxyReqPathResolver: ({ originalUrl }) => originalUrl.startsWith('/app') ? originalUrl : '/app' + originalUrl
+        });
+      }
+
+      const csrfMiddleware = (req, res, next) => {
+        if (['/', '/signup', '/login'].includes(req.originalUrl)) createCsrf(req, res, next);
+        else next()
+      }
+
+      app.get([...endpoints, '/main__*'], validateCsrf, csrfMiddleware, handler);
     } else {
-      app.use(endpoints, proxy(url, {
+      const authMiddleware = async (req, res, next) => {
+        if (skipAuth.includes(req.originalUrl)) next();
+        else await validateAuth(req, res, next);
+      }
+      app.use(endpoints, authMiddleware, validateCsrf, proxy(url, {
         proxyReqPathResolver: ({ originalUrl }) => originalUrl
       }));
     }
   });
+
+  app.use((req, res) => res.redirect('/'));
 
 }

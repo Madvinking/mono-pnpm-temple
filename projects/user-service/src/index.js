@@ -5,10 +5,13 @@ import { typeDefs } from './schema.js';
 import { resolvers } from './resolvers.js';
 import { crud } from './crud.js';
 initService(async function init(app) {
+
   const server = new ApolloServer({
     schema: buildFederatedSchema([{ typeDefs, resolvers }]),
   });
+
   server.applyMiddleware({ app });
+
   crud(app);
 });
 

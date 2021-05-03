@@ -1,4 +1,3 @@
-
 import { loginApi, signupApi, getDataApi } from './api.js';
 
 export function crud(app) {
@@ -18,7 +17,6 @@ export function crud(app) {
 
   app.post('/user/login', async (req, res) => {
     try {
-      console.log(111111);
       let { email, password } = req.body;
       const { cookie, name, company, createAt, _id } = await loginApi({ email, password });
       res.cookie(cookie.name, cookie.token, cookie.config);
@@ -30,7 +28,8 @@ export function crud(app) {
 
   app.get('/user/getData', async (req, res) => {
     try {
-      const { email, name, company, createAt, _id } = await getDataApi({ email: req.user.email });
+      const { _id, email } = JSON.parse(req.headers['user-data']);
+      const { name, company, createAt } = await getDataApi({ _id });
       res.json({ email, name, company, createAt, _id });
     } catch (err) {
       throw new ServerError({ message: 'faild to get user data with', statusCode: 401, err });
