@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: service-example
+  labels:
+    name: service-example
+spec:
+  containers:
+    - name: service-example
+      image: service-example:local
+      imagePullPolicy: Never
+      env:
+        - name: FORCE_COLOR
+          value: "1"
+      volumeMounts:
+        - name: service-example-src
+          mountPath: /projects/service-example/src
+        - name: shared-src
+          mountPath: /projects/shared/src
+      ports:
+        - containerPort: 8081
+  volumes:
+    - name: service-example-src
+      hostPath:
+        path: /projects/service-example/src
+    - name: shared-src
+      hostPath:
+        path: /projects/shared/src

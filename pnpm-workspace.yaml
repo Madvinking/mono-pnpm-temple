@@ -1,0 +1,4 @@
+packages:
+  - "packages/*"
+  - "projects/*"
+  - "!projects/dev-b81f2c9a09"

@@ -1,0 +1,24 @@
+{
+  "name": "@mono-pnpm-temple-prj/svelte-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "run-p dev:*",
+    "dev:vite": "vite",
+    "dev:routify": "routify",
+    "build": "routify -b && vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "next",
+    "@mdi/js": "5.9.55",
+    "svelte": "3.37.0",
+    "vite": "2.2.3",
+    "svelte-materialify": "0.3.10",
+    "@roxi/routify": "2.15.1",
+    "rollup": "2.45.2"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

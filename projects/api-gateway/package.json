@@ -1,0 +1,28 @@
+{
+  "name": "@mono-pnpm-temple-prj/api-gateway",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "/src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/gateway": "0.26.1",
+    "@mono-pnpm-temple/toolbox": "workspace:1.0.0",
+    "apollo-server-express": "2.23.0",
+    "csurf": "1.11.0",
+    "express": "4.17.1",
+    "express-http-proxy": "1.6.2",
+    "graphql": "15.5.0",
+    "jsonwebtoken": "8.5.1",
+    "joi": "17.3.0"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

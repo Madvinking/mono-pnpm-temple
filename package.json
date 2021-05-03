@@ -1,0 +1,64 @@
+{
+  "name": "mono-pnpm-temple",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "license": "MIT",
+  "contributors": [
+    "Nir Winkler <madvinking@gmail.com> (@Nir)"
+  ],
+  "private": true,
+  "scripts": {
+    "watch": "run-s run:all watch:all",
+    "watch:all": "pnpm run tab watch:app watch:gateway watch:user",
+    "watch:app": "pnpm run --dir projects/svelte-app dev",
+    "watch:gateway": "sleep 5 && pnpm run --dir projects/api-gateway watch",
+    "watch:user": "pnpm run --dir projects/user-service watch",
+    "run:all": "run-p run:consul run:mongo",
+    "run:consul": "docker start consul || pnpm run create:consul",
+    "run:mongo": "docker start mongo || pnpm run create:mongo",
+    "create:consul": "docker run -d --name consul -p 18500:8500 consul:latest",
+    "create:mongo": "docker run -d -v $(echo $PWD)/db/mongo:/tmp --name mongo -p 27017:27017 mongo:latest && sleep 5 && docker exec mongo bash -c 'mongo < /tmp/create.js'",
+    "clean": "pnpm -r clean && rm -rf node_modules",
+    "test": "jest --config jest.config.cjs",
+    "lint": "eslint -c .eslintrc.cjs --ext .js,.svelte --fix --color",
+    "checkLicense": "license-checker | grep 'licenses:' | sort -u",
+    "ncu": "pnpm -r run upkg && yarn upkg",
+    "upkg": "ncu -u --packageFile ./package.json",
+    "prepare": "husky install",
+    "tab": "node tools/tab.cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madvinking/mono-pnpm-temple.git"
+  },
+  "bugs": {
+    "url": "https://github.com/madvinking/mono-pnpm-temple/issues"
+  },
+  "homepage": "https://github.com/madvinking/mono-pnpm-temple#readme",
+  "devDependencies": {
+    "eslint": "7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-svelte3": "3.2.0",
+    "svelte": "3.38.1",
+    "husky": "^6.0.0",
+    "jest": "26.6.3",
+    "npm-run-all": "4.1.5",
+    "license-checker": "25.0.1",
+    "nodemon": "^2.0.7",
+    "npm-check-updates": "11.5.9",
+    "prettier": "^2.2.1"
+  },
+  "resolutions": {},
+  "husky": {
+    "hooks": {
+      "commit-msg": "node tools/scripts/commitmsg.js",
+      "pre-commit": "check-engines && node tools/scripts/lint-on-commit.js && node tools/scripts/snapshot-diffs-commit-hook.js",
+      "post-commit": "git update-index --again"
+    }
+  },
+  "volta": {
+    "node": "16.0.0"
+  }
+}

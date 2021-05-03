@@ -1,0 +1,33 @@
+{
+  "name": "@mono-pnpm-temple-prj/e2e",
+  "version": "1.0.0",
+  "description": "jest-puppeteer e2e",
+  "main": "runner/init.js",
+  "types": "./index.d.ts",
+  "private": true,
+  "scripts": {
+    "ui": "yarn majestic",
+    "start": "node --unhandled-rejections=warn runner/init.js",
+    "start:performance": "RUN_TYPE=performance node --unhandled-rejections=warn runner/init.js",
+    "start:smoke": "RUN_TYPE=smoke node --unhandled-rejections=warn runner/init.js",
+    "inspect": "node --inspect-brk=5858 --unhandled-rejections=warn runner/init.js",
+    "upkg": "ncu -u --packageFile ./package.json"
+  },
+  "dependencies": {
+    "chalk": "4.1.1",
+    "dotenv": "8.2.0",
+    "faker": "5.5.3",
+    "figlet": "1.5.0",
+    "puppeteer": "9.0.0",
+    "lighthouse": "7.4.0",
+    "throat": "6.0.1",
+    "majestic": "1.8.0",
+    "poll-until-promise": "3.6.1",
+    "deep-compare-any-order": "^1.0.2",
+    "deepmerge": "4.2.2",
+    "uuid": "8.3.2"
+  },
+  "volta": {
+    "extends": "../package.json"
+  }
+}

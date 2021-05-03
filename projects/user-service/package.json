@@ -1,0 +1,24 @@
+{
+  "name": "@mono-pnpm-temple-prj/service-example",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf node_modules",
+    "start": "node src/index.js",
+    "watch": "nodemon --legacy-watch src/index.js",
+    "debug": "nodemon --legacy-watch --nolazy --inspect-brk=9230 src/index.js",
+    "upkg": "ncu -u --packageFile ./package.json"
+  },
+  "dependencies": {
+    "@mono-pnpm-temple/toolbox": "workspace:1.0.0",
+    "@apollo/federation": "0.23.2",
+    "apollo-server-express": "2.24.0",
+    "graphql": "15.5.0",
+    "joi": "17.3.0",
+    "crypto-js": "4.0.0",
+    "jsonwebtoken": "8.5.1"
+  }
+}

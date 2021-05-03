@@ -1,0 +1,38 @@
+{
+  "name": "@mono-pnpm-temple/toolbox",
+  "version": "1.0.0",
+  "description": "server toolbox",
+  "main": "./src/index.js",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "upkg": "ncu -u --packageFile ./package.json"
+  },
+  "author": "",
+  "dependencies": {
+    "@logzio-node-toolbox/config": "0.0.13",
+    "@logzio-node-toolbox/consul": "0.0.29",
+    "@logzio-node-toolbox/logger": "0.0.15",
+    "@logzio-node-toolbox/tracer": "0.0.6",
+    "express": "4.17.1",
+    "express-auto-async-handler": "0.0.1",
+    "@godaddy/terminus": "4.7.1",
+    "dotenv": "8.2.0",
+    "helmet": "4.6.0",
+    "cookie-parser": "1.4.5",
+    "fast-safe-stringify": "2.0.7",
+    "joi": "17.3.0",
+    "lodash": "4.17.21",
+    "mongoose": "5.12.7",
+    "ip": "1.1.5",
+    "@apollo/gateway": "0.27.1",
+    "@apollo/federation": "0.23.2",
+    "apollo-server-express": "2.24.0",
+    "graphql": "15.5.0"
+  },
+  "devDependencies": {},
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-example
+spec:
+  selector:
+    matchLabels:
+      name: service-example
+  serviceName: service-example
+  minReadySeconds: 20
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: service-example
+    spec:
+      containers:
+        - name: service-example
+          image: service-example:local
+          env:
+            - name: FORCE_COLOR
+              value: "1"
+          ports:
+            - containerPort: 8081
+              protocol: TCP
+      terminationGracePeriodSeconds: 30
