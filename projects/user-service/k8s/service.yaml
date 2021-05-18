@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-example
+  labels:
+    name: service-example
+spec:
+  ports:
+    - name: service-example
+      port: 8081
+      targetPort: 8081
+  clusterIP: None
+  selector:
+    name: service-example

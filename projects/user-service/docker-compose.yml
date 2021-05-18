@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  user-service:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        VERSION: ${VERSION:-1}
+      cache_from:
+        - "mono-pnpm-temple-registry:5000/user-service:${CACHE_FROM:-local}"
+        - "mono-pnpm-temple-registry:5000/user-service:master-latest"
+    image: mono-pnpm-temple-registry:5000/user-service:${VERSION:-local}
+    container_name: user-service
+    ports:
+      - 8082:8082
+    networks:
+      - mono-pnpm-temple-network
+
+networks:
+  mono-pnpm-temple-network:
+    external: true

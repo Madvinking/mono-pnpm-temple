@@ -1,0 +1,10 @@
+packages/toolbox/cert
+projects/svelte-app/.routify
+**/node_modules
+**/.DS_Store
+.DS_Store
+**/__output__
+**/.env
+**/pnpm-debug.log
+**/_isolated_
+cert/*

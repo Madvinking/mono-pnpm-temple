@@ -1,0 +1,16 @@
+{
+  "watch": "run-s run:all watch:all",
+  "watch:all": "pnpm run tab watch:app watch:user watch:gateway",
+  "watch:app": "pnpm run --dir projects/svelte-app dev",
+  "watch:gateway": "sleep 3 && pnpm run --dir projects/api-gateway watch",
+  "watch:user": "pnpm run --dir projects/user-service watch",
+  "run:all": "docker-compose up -d consul mongo",
+  "create:database": "docker exec mongo bash -c 'mongo < /tmp/create.js'",
+  "clean": "pnpm -r clean && rm -rf **/node_modules **/_isolated_",
+  "test": "jest --config jest.config.cjs",
+  "lint": "eslint -c .eslintrc.cjs --ext .js --fix --color .",
+  "checkLicense": "license-checker | grep 'licenses:' | sort -u",
+  "ncu": "pnpm -r run upkg && yarn upkg",
+  "upkg": "ncu -u --packageFile ./package.json",
+  "tab": "node tools/tab.cjs"
+}

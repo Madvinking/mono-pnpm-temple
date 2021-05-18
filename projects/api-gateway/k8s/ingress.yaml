@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: user-service
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+    - host: user-service
+      http:
+        paths:
+          - backend:
+              serviceName: user-service
+              servicePort: 8081
+            path: /

@@ -1,0 +1,31 @@
+{
+  "name": "@mono-pnpm-temple-pkg/toolbox",
+  "version": "1.0.0",
+  "description": "server toolbox",
+  "main": "./src/index.js",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "upkg": "ncu -u --packageFile ./package.json"
+  },
+  "author": "",
+  "dependencies": {
+    "@logzio-node-toolbox/config": "0.0.14",
+    "@logzio-node-toolbox/consul": "0.0.30",
+    "@logzio-node-toolbox/logger": "0.0.16",
+    "@logzio-node-toolbox/tracer": "0.0.10",
+    "@mono-pnpm-temple-pkg/modules": "workspace:1.0.0",
+    "@mono-pnpm-temple-pkg/utils": "workspace:1.0.0",
+    "@godaddy/terminus": "4.7.2",
+    "express-auto-async-handler": "0.0.1",
+    "helmet": "4.6.0",
+    "cookie-parser": "1.4.5",
+    "ip": "1.1.5",
+    "uuid": "8.3.2"
+  },
+  "devDependencies": {},
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "mono-pnpm-temple",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "license": "MIT",
+  "contributors": [
+    "Nir Winkler <madvinking@gmail.com> (@Nir)"
+  ],
+  "private": true,
+  "scripts": {
+    "watch": "run-s run:all watch:all",
+    "watch:all": "pnpm run tab watch:app watch:user watch:gateway",
+    "watch:app": "pnpm run --dir projects/svelte-app dev",
+    "watch:gateway": "sleep 3 && pnpm run --dir projects/api-gateway watch",
+    "watch:user": "pnpm run --dir projects/user-service watch",
+    "run:all": "docker-compose up -d consul mongo postgres",
+    "create:database": "docker exec mongo bash -c 'mongo < /tmp/create.js' && node db/postgres/createdb.js",
+    "clean": "pnpm -r clean && rm -rf **/node_modules **/_isolated_",
+    "test": "jest --config jest.config.cjs",
+    "lint": "eslint -c .eslintrc.cjs --ext .js --fix --color .",
+    "checkLicense": "license-checker | grep 'licenses:' | sort -u",
+    "ncu": "pnpm -r run upkg && yarn upkg",
+    "upkg": "ncu -u --packageFile ./package.json",
+    "tab": "node tools/tab.cjs",
+    "xxc": "xxc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madvinking/mono-pnpm-temple.git"
+  },
+  "bugs": {
+    "url": "https://github.com/madvinking/mono-pnpm-temple/issues"
+  },
+  "homepage": "https://github.com/madvinking/mono-pnpm-temple#readme",
+  "devDependencies": {
+    "eslint": "7.26.0",
+    "@types/jest": "26.0.23",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-prettier": "3.4.0",
+    "husky": "6.0.0",
+    "jest": "26.6.3",
+    "npm-run-all": "4.1.5",
+    "license-checker": "25.0.1",
+    "nodemon": "2.0.7",
+    "npm-check-updates": "11.5.13",
+    "prettier": "2.3.0",
+    "pnpm-isolate-workspace": "0.0.4",
+    "1script": "0.0.3",
+    "pgtools": "0.3.1"
+  },
+  "resolutions": {},
+  "volta": {
+    "node": "16.1.0"
+  }
+}

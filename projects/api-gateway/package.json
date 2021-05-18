@@ -1,0 +1,31 @@
+{
+  "name": "@mono-pnpm-temple-prj/api-gateway",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "/src/index.js",
+  "scripts": {
+    "isolate": "pnpm-isolate-workspace --include-root-deps && node ../../tools/copy-dev-deps.cjs _isolated_/dev",
+    "docker:build": "pnpm run isolate && docker-compose build",
+    "docker:up": "docker-compose up",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon src/index.js",
+    "upkg": "ncu -u --packageFile ./package.json",
+    "lint": "eslint -c .eslintrc.cjs src",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@mono-pnpm-temple-pkg/toolbox": "workspace:1.0.0",
+    "@mono-pnpm-temple-pkg/modules": "workspace:1.0.0",
+    "@apollo/gateway": "0.28.1",
+    "csurf": "1.11.0",
+    "express-http-proxy": "1.6.2"
+  },
+  "devDependencies": {},
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

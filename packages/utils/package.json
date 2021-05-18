@@ -1,0 +1,18 @@
+{
+  "name": "@mono-pnpm-temple-pkg/utils",
+  "version": "1.0.0",
+  "description": "server utils",
+  "main": "./src/index.js",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "upkg": "ncu -u --packageFile ./package.json"
+  },
+  "author": "",
+  "dependencies": {},
+  "devDependencies": {},
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

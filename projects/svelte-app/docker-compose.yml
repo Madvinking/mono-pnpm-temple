@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  app-frontend:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        VERSION: ${VERSION:-1}
+      cache_from:
+        - "mono-pnpm-temple-registry:5000/app-frontend:${CACHE_FROM:-local}"
+        - "mono-pnpm-temple-registry:5000/app-frontend:master-latest"
+    image: mono-pnpm-temple-registry:5000/app-frontend:${VERSION:-local}
+    container_name: app-frontend
+    ports:
+      - 8081:8081
+    networks:
+      - mono-pnpm-temple-network
+
+networks:
+  mono-pnpm-temple-network:
+    external: true
