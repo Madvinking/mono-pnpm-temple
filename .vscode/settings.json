@@ -1,19 +1,146 @@
 {
+  "window.title": "${activeEditorLong}${separator}${rootName}",
+  "editor.tabSize": 2,
+  "editor.fontSize": 13,
+  "editor.wordWrap": "on",
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "Firicico",
+  "editor.rulers": [
+    121
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "files.hotExit": "off",
+  "files.autoSave": "onWindowChange",
+  "files.trimTrailingWhitespace": true,
+  "files.defaultLanguage": "javascript",
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/.hg/store/**": true,
+    "kibana*/optimize/": true,
+    "kibana*/built_assets/": true,
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/dist": true,
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "workbench.sideBar.location": "right",
+  "terminal.integrated.shell.osx": "zsh",
+  "terminal.integrated.fontFamily": "Menlo",
+  "explorer.confirmDelete": false,
+  "emmet.syntaxProfiles": {
+    "javascript": "jsx"
+  },
+  "git.promptToSaveFilesBeforeCommit": "never",
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "telemetry.enableTelemetry": false,
+  "telemetry.enableCrashReporter": false,
+  "eslint.packageManager": "pnpm",
+  "eslint.run": "onSave",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "One Dark Pro",
+  "cSpell.userWords": [
+    "grafana",
+    "itest",
+    "middlewares",
+    "sourcemap",
+    "styleguide"
+  ],
+  "yaml.schemas": {
+    "file:///Users/nirwinkler/.vscode/extensions/atlassian.atlascode-2.8.6/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+  },
+  "atlascode.jira.enabled": true,
+  "atlascode.jira.lastCreateSiteAndProject": {
+    "siteId": "d1c86379-ea2c-44ed-8646-6e23f4ba1447",
+    "projectKey": "DEV"
+  },
+  "atlascode.bitbucket.enabled": false,
+  "atlascode.jira.jqlList": [
+    {
+      "id": "87c6e176-be37-456e-bf7b-e72d40763d6d",
+      "enabled": true,
+      "name": "My logzio Issues",
+      "query": "assignee = currentUser() AND resolution = Unresolved ORDER BY lastViewed DESC",
+      "siteId": "d1c86379-ea2c-44ed-8646-6e23f4ba1447",
+      "monitor": true
+    }
+  ],
+  "vs-kubernetes": {
+    "vs-kubernetes.helm-path.mac": "/Users/nirwinkler/.vs-kubernetes/tools/helm/darwin-amd64/helm",
+    "vs-kubernetes.draft-path.mac": "/Users/nirwinkler/.vs-kubernetes/tools/draft/darwin-amd64/draft",
+    "vs-kubernetes.minikube-path.mac": "/Users/nirwinkler/.vs-kubernetes/tools/minikube/darwin-amd64/minikube"
+  },
+  "files.associations": {
+    ".env": "dotenv",
+    "Jenkinsfile": "groovy"
+  },
+  "debug.javascript.autoAttachFilter": "disabled",
+  "cSpell.enableFiletypes": [
+    "!javascript",
+    "groovy"
+  ],
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  },
+  "editor.formatOnSave": true,
+  "docker.attachShellCommand.linuxContainer": "/bin/sh -c \"[ -e /bin/zsh ] && /bin/zsh || /bin/sh\"",
+  "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWxcIixcImN1c3RvbUxpYnJhcmllc1wiOltdLFwicGx1Z2luc1wiOltdLFwicmVjZW50Q29sb3JzXCI6W1wiRkYwMDAwXCJdLFwiZm9ybWF0V2lkdGhcIjoyNDAsXCJjcmVhdGVUYXJnZXRcIjpmYWxzZSxcInBhZ2VGb3JtYXRcIjp7XCJ4XCI6MCxcInlcIjowLFwid2lkdGhcIjo4NTAsXCJoZWlnaHRcIjoxMTAwfSxcInNlYXJjaFwiOnRydWUsXCJzaG93U3RhcnRTY3JlZW5cIjp0cnVlLFwiZ3JpZENvbG9yXCI6XCIjZDBkMGQwXCIsXCJkYXJrR3JpZENvbG9yXCI6XCIjNmU2ZTZlXCIsXCJhdXRvc2F2ZVwiOnRydWUsXCJyZXNpemVJbWFnZXNcIjpudWxsLFwib3BlbkNvdW50ZXJcIjowLFwidmVyc2lvblwiOjE4LFwidW5pdFwiOjEsXCJpc1J1bGVyT25cIjpmYWxzZSxcInVpXCI6XCJcIn0ifQ==",
+  "search.mode": "newEditor",
+  "svelte.plugin.svelte.format.config.svelteSortOrder": "scripts-options-styles-markup",
+  "cSpell.enabled": true,
+  "terminal.integrated.tabs.enabled": true,
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter.notebook.ipynb",
+      "filenamePattern": "*.ipynb"
+    }
+  ],
+  "window.zoomLevel": 1,
   "workbench.colorCustomizations": {
-    "activityBar.activeBackground": "#fae5fe",
-    "activityBar.activeBorder": "#b89c07",
-    "activityBar.background": "#fae5fe",
+    "activityBar.activeBackground": "#87fdbd",
+    "activityBar.activeBorder": "#ba82fd",
+    "activityBar.background": "#87fdbd",
     "activityBar.foreground": "#15202b",
     "activityBar.inactiveForeground": "#15202b99",
-    "activityBarBadge.background": "#b89c07",
+    "activityBarBadge.background": "#ba82fd",
     "activityBarBadge.foreground": "#15202b",
-    "statusBar.background": "#f0b5fb",
+    "statusBar.background": "#55fca2",
     "statusBar.foreground": "#15202b",
-    "statusBarItem.hoverBackground": "#e685f8",
-    "titleBar.activeBackground": "#f0b5fb",
+    "statusBarItem.hoverBackground": "#23fb87",
+    "titleBar.activeBackground": "#55fca2",
     "titleBar.activeForeground": "#15202b",
-    "titleBar.inactiveBackground": "#f0b5fb99",
+    "titleBar.inactiveBackground": "#55fca299",
     "titleBar.inactiveForeground": "#15202b99"
   },
-  "peacock.color": "#f0b5fb"
+  "peacock.color": "#55fca2",
+  "cSpell.words": [
+    "finout",
+    "iterm",
+    "pnpm"
+  ]
 }

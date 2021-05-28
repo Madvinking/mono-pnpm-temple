@@ -1,0 +1,46 @@
+// Place your key bindings in this file to override the defaults
+[
+  // TERMINAL INTEGRATION:
+  {
+    "key": "alt+ctrl+down",
+    "command": "workbench.action.terminal.focusNext"
+  },
+  {
+    "key": "alt+ctrl+up",
+    "command": "workbench.action.terminal.focusPrevious"
+  },
+  {
+    "key": "alt+ctrl+right",
+    "command": "workbench.action.terminal.focusNextPane"
+  },
+  {
+    "key": "alt+ctrl+left",
+    "command": "workbench.action.terminal.focusPreviousPane"
+  },
+  {
+    "key": "alt+ctrl+;",
+    "command": "workbench.action.terminal.new"
+  },
+  {
+    "key": "alt+ctrl+\\",
+    "command": "workbench.action.terminal.kill"
+  },
+  {
+    "key": "alt+ctrl+'",
+    "command": "workbench.action.terminal.focus",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+ctrl+'",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "alt+cmd+c",
+    "command": "copyFilePath"
+  },
+  {
+    "key": "shift+alt+cmd+c",
+    "command": "copyRelativeFilePath"
+  },
+]
