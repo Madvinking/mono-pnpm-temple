@@ -44,7 +44,6 @@ if [[ $? != 0 ]] ; then
   echo "${COLOR}|  installing aws-cli   |${NC}"
   echo "${COLOR} -----------------------${NC}"
   brew install awscli
-  echo 'alias aws-ecr="aws ecr get-login-password --region us-east-1 | docker login -u AWS --password-stdin 277411487094.dkr.ecr.us-east-1.amazonaws.com"' >> ~/.zshrc
 fi
 
 kubectl version
